@@ -22,7 +22,7 @@
     </top>
     <center>
         <VBox alignment="TOP_CENTER" prefHeight="240.0" prefWidth="502.0" spacing="20.0" BorderPane.alignment="CENTER">
-            <Label alignment="CENTER" contentDisplay="CENTER" text="Report" textAlignment="CENTER">
+            <Label alignment="CENTER" contentDisplay="CENTER" text="View Expense" textAlignment="CENTER">
                 <font>
                     <Font name="Comic Sans MS" size="30.0"/>
                 </font>
