@@ -4,13 +4,15 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-
-<BorderPane fx:id="mainPane" prefHeight="700.0" prefWidth="500.0" style="-fx-background-color: #8BD5D0;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.personal_finance_application.welcome.WelcomeController">
+<BorderPane fx:id="mainPane" prefHeight="700.0" prefWidth="500.0" style="-fx-background-color: #8BD5D0;"
+            xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.personal_finance_application.dashboard.DashboardController">
     <top>
         <VBox alignment="CENTER" spacing="20.0" BorderPane.alignment="CENTER">
-            <Label alignment="CENTER" prefHeight="87.0" prefWidth="669.0" style="-fx-background-color: #79D17E;" text="Personal Finance Application" textAlignment="CENTER">
+            <Label alignment="CENTER" prefHeight="87.0" prefWidth="669.0" style="-fx-background-color: #79D17E;"
+                   text="Personal Finance Application" textAlignment="CENTER">
                 <font>
-                    <Font name="Comic Sans MS Bold" size="35.0" />
+                    <Font name="Comic Sans MS Bold" size="35.0"/>
                 </font>
             </Label>
         </VBox>
@@ -19,46 +21,46 @@
         <VBox alignment="TOP_CENTER" prefHeight="240.0" prefWidth="502.0" spacing="20.0" BorderPane.alignment="CENTER">
             <Label alignment="CENTER" contentDisplay="CENTER" text="Dashboard" textAlignment="CENTER">
                 <font>
-                    <Font name="Comic Sans MS" size="30.0" />
+                    <Font name="Comic Sans MS" size="30.0"/>
                 </font>
                 <VBox.margin>
-                    <Insets top="20.0" />
+                    <Insets top="20.0"/>
                 </VBox.margin>
             </Label>
             <HBox>
                 <VBox alignment="CENTER_LEFT">
                     <Label text="Income:">
                         <font>
-                            <Font name="Comic Sans MS" size="30.0" />
+                            <Font name="Comic Sans MS" size="30.0"/>
                         </font>
                         <VBox.margin>
-                            <Insets left="65.0" />
+                            <Insets left="65.0"/>
                         </VBox.margin>
                     </Label>
                     <Label text="00000">
                         <font>
-                            <Font name="Comic Sans MS" size="30.0" />
+                            <Font name="Comic Sans MS" size="30.0"/>
                         </font>
                         <VBox.margin>
-                            <Insets left="65.0" />
+                            <Insets left="65.0"/>
                         </VBox.margin>
                     </Label>
                 </VBox>
                 <VBox alignment="CENTER_RIGHT">
                     <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" text="Expense:">
                         <font>
-                            <Font name="Comic Sans MS" size="30.0" />
+                            <Font name="Comic Sans MS" size="30.0"/>
                         </font>
                         <VBox.margin>
-                            <Insets left="140.0" />
+                            <Insets left="140.0"/>
                         </VBox.margin>
                     </Label>
                     <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" text="00000">
                         <font>
-                            <Font name="Comic Sans MS" size="30.0" />
+                            <Font name="Comic Sans MS" size="30.0"/>
                         </font>
                         <VBox.margin>
-                            <Insets right="30.0" />
+                            <Insets right="30.0"/>
                         </VBox.margin>
                     </Label>
                 </VBox>
@@ -66,83 +68,84 @@
             <HBox alignment="CENTER" spacing="10.0">
                 <Button onAction="#onAddIncome" prefHeight="41.0" prefWidth="180.0" text="Add Income">
                     <font>
-                        <Font name="Comic Sans MS" size="20.0" />
+                        <Font name="Comic Sans MS" size="20.0"/>
                     </font>
                 </Button>
                 <Button onAction="#onAddExpense" prefHeight="41.0" prefWidth="179.0" text="Add Expense">
                     <font>
-                        <Font name="Comic Sans MS" size="20.0" />
+                        <Font name="Comic Sans MS" size="20.0"/>
                     </font>
                     <HBox.margin>
-                        <Insets left="70.0" />
+                        <Insets left="70.0"/>
                     </HBox.margin>
                 </Button>
                 <VBox.margin>
-                    <Insets />
+                    <Insets/>
                 </VBox.margin>
             </HBox>
             <HBox alignment="CENTER" spacing="10.0">
                 <Button onAction="#onDeleteIncome" prefHeight="41.0" prefWidth="180.0" text="Delete Income">
                     <font>
-                        <Font name="Comic Sans MS" size="20.0" />
+                        <Font name="Comic Sans MS" size="20.0"/>
                     </font>
                 </Button>
                 <Button onAction="#onDeleteExpense" prefHeight="41.0" prefWidth="180.0" text="Delete Expense">
                     <font>
-                        <Font name="Comic Sans MS" size="20.0" />
+                        <Font name="Comic Sans MS" size="20.0"/>
                     </font>
                     <HBox.margin>
-                        <Insets left="70.0" />
+                        <Insets left="70.0"/>
                     </HBox.margin>
                 </Button>
                 <VBox.margin>
-                    <Insets top="30.0" />
+                    <Insets top="30.0"/>
                 </VBox.margin>
             </HBox>
             <HBox alignment="CENTER" spacing="10.0">
                 <Button onAction="#onViewIncome" prefHeight="41.0" prefWidth="180.0" text="View Income">
                     <font>
-                        <Font name="Comic Sans MS" size="20.0" />
+                        <Font name="Comic Sans MS" size="20.0"/>
                     </font>
                 </Button>
                 <Button onAction="#onViewExpense" prefHeight="41.0" prefWidth="180.0" text="View Expense">
                     <font>
-                        <Font name="Comic Sans MS" size="20.0" />
+                        <Font name="Comic Sans MS" size="20.0"/>
                     </font>
                     <HBox.margin>
-                        <Insets left="70.0" />
+                        <Insets left="70.0"/>
                     </HBox.margin>
                 </Button>
                 <VBox.margin>
-                    <Insets top="30.0" />
+                    <Insets top="30.0"/>
                 </VBox.margin>
             </HBox>
-            <HBox alignment="TOP_CENTER" prefHeight="39.0" prefWidth="500.0" spacing="20.0" BorderPane.alignment="CENTER">
+            <HBox alignment="TOP_CENTER" prefHeight="39.0" prefWidth="500.0" spacing="20.0"
+                  BorderPane.alignment="CENTER">
                 <Label alignment="CENTER" contentDisplay="CENTER" text="Savings:" textAlignment="CENTER">
                     <font>
-                        <Font name="Comic Sans MS" size="30.0" />
+                        <Font name="Comic Sans MS" size="30.0"/>
                     </font>
                     <VBox.margin>
-                        <Insets top="20.0" />
+                        <Insets top="20.0"/>
                     </VBox.margin>
                 </Label>
                 <Label alignment="CENTER" contentDisplay="CENTER" text="00000" textAlignment="CENTER">
                     <font>
-                        <Font name="Comic Sans MS" size="30.0" />
+                        <Font name="Comic Sans MS" size="30.0"/>
                     </font>
                     <VBox.margin>
-                        <Insets />
+                        <Insets/>
                     </VBox.margin>
                 </Label>
             </HBox>
             <HBox alignment="CENTER" spacing="10.0">
                 <Button onAction="#onGenerateReport" prefHeight="54.0" prefWidth="216.0" text="Generate Report">
                     <font>
-                        <Font name="Comic Sans MS" size="20.0" />
+                        <Font name="Comic Sans MS" size="20.0"/>
                     </font>
                 </Button>
                 <VBox.margin>
-                    <Insets top="30.0" />
+                    <Insets top="30.0"/>
                 </VBox.margin>
             </HBox>
         </VBox>
