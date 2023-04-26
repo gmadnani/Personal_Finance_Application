@@ -38,7 +38,8 @@
                     <Insets/>
                 </VBox.margin>
                 <children>
-                    <Button onAction="#onGoBack" contentDisplay="CENTER" mnemonicParsing="false" text="Go Back">
+                    <Button fx:id="goBackButton" onAction="#onGoBack" contentDisplay="CENTER" mnemonicParsing="false"
+                            text="Go Back">
                         <font>
                             <Font name="Comic Sans MS" size="25.0"/>
                         </font>

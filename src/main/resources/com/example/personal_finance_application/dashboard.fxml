@@ -66,12 +66,14 @@
                 </VBox>
             </HBox>
             <HBox alignment="CENTER" spacing="10.0">
-                <Button onAction="#onAddIncome" prefHeight="41.0" prefWidth="180.0" text="Add Income">
+                <Button fx:id="addIncomeButton" onAction="#onAddIncome" prefHeight="41.0" prefWidth="180.0"
+                        text="Add Income">
                     <font>
                         <Font name="Comic Sans MS" size="20.0"/>
                     </font>
                 </Button>
-                <Button onAction="#onAddExpense" prefHeight="41.0" prefWidth="179.0" text="Add Expense">
+                <Button fx:id="addExpenseButton" onAction="#onAddExpense" prefHeight="41.0" prefWidth="179.0"
+                        text="Add Expense">
                     <font>
                         <Font name="Comic Sans MS" size="20.0"/>
                     </font>
@@ -84,12 +86,14 @@
                 </VBox.margin>
             </HBox>
             <HBox alignment="CENTER" spacing="10.0">
-                <Button onAction="#onDeleteIncome" prefHeight="41.0" prefWidth="180.0" text="Delete Income">
+                <Button fx:id="deleteIncomeButton" onAction="#onDeleteIncome" prefHeight="41.0" prefWidth="180.0"
+                        text="Delete Income">
                     <font>
                         <Font name="Comic Sans MS" size="20.0"/>
                     </font>
                 </Button>
-                <Button onAction="#onDeleteExpense" prefHeight="41.0" prefWidth="180.0" text="Delete Expense">
+                <Button fx:id="deleteExpenseButton" onAction="#onDeleteExpense" prefHeight="41.0" prefWidth="180.0"
+                        text="Delete Expense">
                     <font>
                         <Font name="Comic Sans MS" size="20.0"/>
                     </font>
@@ -102,12 +106,14 @@
                 </VBox.margin>
             </HBox>
             <HBox alignment="CENTER" spacing="10.0">
-                <Button onAction="#onViewIncome" prefHeight="41.0" prefWidth="180.0" text="View Income">
+                <Button fx:id="viewIncomeButton" onAction="#onViewIncome" prefHeight="41.0" prefWidth="180.0"
+                        text="View Income">
                     <font>
                         <Font name="Comic Sans MS" size="20.0"/>
                     </font>
                 </Button>
-                <Button onAction="#onViewExpense" prefHeight="41.0" prefWidth="180.0" text="View Expense">
+                <Button fx:id="viewExpenseButton" onAction="#onViewExpense" prefHeight="41.0" prefWidth="180.0"
+                        text="View Expense">
                     <font>
                         <Font name="Comic Sans MS" size="20.0"/>
                     </font>
@@ -139,7 +145,8 @@
                 </Label>
             </HBox>
             <HBox alignment="CENTER" spacing="10.0">
-                <Button onAction="#onGenerateReport" prefHeight="54.0" prefWidth="216.0" text="Generate Report">
+                <Button fx:id="generateReportButton" onAction="#onGenerateReport" prefHeight="54.0" prefWidth="216.0"
+                        text="Generate Report">
                     <font>
                         <Font name="Comic Sans MS" size="20.0"/>
                     </font>

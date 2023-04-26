@@ -89,12 +89,12 @@
                     <Insets left="30.0"/>
                 </VBox.margin>
                 <children>
-                    <Button onAction="#onSave" prefHeight="54.0" prefWidth="216.0" text="Save">
+                    <Button fx:id="saveButton" onAction="#onSave" prefHeight="54.0" prefWidth="216.0" text="Save">
                         <font>
                             <Font name="Comic Sans MS" size="20.0"/>
                         </font>
                     </Button>
-                    <Button onAction="#onCancel" prefHeight="54.0" prefWidth="216.0" text="Cancel">
+                    <Button fx:id="cancelButton" onAction="#onCancel" prefHeight="54.0" prefWidth="216.0" text="Cancel">
                         <font>
                             <Font name="Comic Sans MS" size="20.0"/>
                         </font>

@@ -75,12 +75,14 @@
                     <Insets left="30.0" top="30.0"/>
                 </VBox.margin>
                 <children>
-                    <Button onAction="#onSubmit" prefHeight="54.0" prefWidth="216.0" text="Register">
+                    <Button fx:id="submitButton" onAction="#onSubmit" prefHeight="54.0" prefWidth="216.0"
+                            text="Register">
                         <font>
                             <Font name="Comic Sans MS" size="20.0"/>
                         </font>
                     </Button>
-                    <Button onAction="#onGoBack" prefHeight="54.0" prefWidth="216.0" text="Go Back">
+                    <Button fx:id="goBackButton" onAction="#onGoBack" prefHeight="54.0" prefWidth="216.0"
+                            text="Go Back">
                         <font>
                             <Font name="Comic Sans MS" size="20.0"/>
                         </font>
