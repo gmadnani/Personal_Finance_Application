@@ -5,10 +5,22 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 public class DashboardController {
+  @FXML
+  private Label incomeLabel;
+  @FXML
+  private Label expenseLabel;
+  @FXML
+  private Label savingsLabel;
   @FXML
   private Button addIncomeButton;
   @FXML
@@ -23,6 +35,10 @@ public class DashboardController {
   private Button viewExpenseButton;
   @FXML
   private Button generateReportButton;
+  
+  public void initialize() throws IOException {
+    updateTotals();
+  }
   
   @FXML
   private void onAddIncome() throws IOException {
@@ -92,5 +108,50 @@ public class DashboardController {
     stage.show();
     Stage currentStage = (Stage) generateReportButton.getScene().getWindow();
     currentStage.close();
+  }
+  
+  private void updateTotals() throws IOException {
+    // Create lists to store income and expense data
+    List<String> incomeData = new ArrayList<>();
+    List<String> expenseData = new ArrayList<>();
+    double totalIncome = 0;
+    double totalExpense = 0;
+    double totalSavings;
+    // Load the CSV file
+    File file = new File(Login.getCurrentUser().getEmail() + ".csv");
+    BufferedReader reader = new BufferedReader(new FileReader(file));
+    // Read the CSV file line by line
+    String line;
+    while ((line = reader.readLine()) != null) {
+      String[] values = line.split(",");
+      String type = values[0].trim();
+      // Store income and expense data in separate lists
+      if (type.equals("Income")) {
+        incomeData.add(line);
+      } else if (type.equals("Expense")) {
+        expenseData.add(line);
+      }
+    }
+    // Calculate the total income
+    for (String income : incomeData) {
+      String[] values = income.split(",");
+      double amount = Double.parseDouble(values[1].trim());
+      totalIncome += amount;
+    }
+    // Calculate the total expense
+    for (String expense : expenseData) {
+      String[] values = expense.split(",");
+      double amount = Double.parseDouble(values[1].trim());
+      totalExpense += amount;
+    }
+    // Calculate the total savings
+    totalSavings = totalIncome - totalExpense;
+    if (totalSavings < 0) {
+      totalSavings = 0;
+    }
+    // update labels
+    incomeLabel.setText(String.format("%.2f", totalIncome));
+    expenseLabel.setText(String.format("%.2f", totalExpense));
+    savingsLabel.setText(String.format("%.2f", totalSavings));
   }
 }

@@ -1,5 +1,8 @@
 Email: abc@gmail.com
 Password: abc123
-Expense: 100.0,food,2023-04-27,chickfila
-Expense: 200.0,bottle,2023-04-28,red bottle
-Income: 10.0,part time,2023-04-28,catering
+Expense,100.0,food,2023-04-27,chickfila
+Expense,200.0,bottle,2023-04-28,red bottle
+Income,10.0,part time,2023-04-28,catering
+Income,20.0,part time,2023-04-28,teaching
+Income,100000.0,new job,2023-05-01,Software
+Expense,50000.0,new car,2023-05-05,lambo

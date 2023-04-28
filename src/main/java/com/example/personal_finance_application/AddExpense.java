@@ -39,7 +39,7 @@ public class AddExpense {
     // Add the expense to the user's CSV file
     File file = new File(Login.getCurrentUser().getEmail() + ".csv");
     FileWriter writer = new FileWriter(file, true);
-    writer.write("\nExpense: " + amount + "," + category + "," + date + "," + notes);
+    writer.write("Expense," + amount + "," + category + "," + date + "," + notes);
     writer.close();
     // Show a success message
     Alert alert = new Alert(Alert.AlertType.INFORMATION, "Expense saved.");

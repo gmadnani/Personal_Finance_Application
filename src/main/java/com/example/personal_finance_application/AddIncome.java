@@ -39,7 +39,7 @@ public class AddIncome {
     // Add the income to the user's CSV file
     File file = new File(Login.getCurrentUser().getEmail() + ".csv");
     FileWriter writer = new FileWriter(file, true);
-    writer.write("\nIncome: " + amount + "," + category + "," + date + "," + notes);
+    writer.write("\nIncome," + amount + "," + category + "," + date + "," + notes);
     writer.close();
     // Show a success message
     Alert alert = new Alert(Alert.AlertType.INFORMATION, "Income saved.");
