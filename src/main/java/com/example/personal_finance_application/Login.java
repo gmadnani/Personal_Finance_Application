@@ -61,7 +61,7 @@ public class Login {
     Alert alert = new Alert(Alert.AlertType.INFORMATION, "Login successful.");
     alert.showAndWait();
     currentUser = new User();
-    currentUser.setEmail(email);
+    currentUser.setEmail(storedEmail);
     // if login is successful, navigate to dashboard
     Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("dashboard.fxml")));
     Stage stage = new Stage();

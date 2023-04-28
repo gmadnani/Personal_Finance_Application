@@ -133,17 +133,15 @@ public class DashboardController {
       }
     }
     // Calculate the total income
-    for (String income : incomeData) {
-      String[] values = income.split(",");
-      double amount = Double.parseDouble(values[1].trim());
-      totalIncome += amount;
-    }
+    totalIncome = incomeData.stream()
+        .map(incomeLine -> incomeLine.split(","))
+        .mapToDouble(values -> Double.parseDouble(values[1].trim()))
+        .sum();
     // Calculate the total expense
-    for (String expense : expenseData) {
-      String[] values = expense.split(",");
-      double amount = Double.parseDouble(values[1].trim());
-      totalExpense += amount;
-    }
+    totalExpense = expenseData.stream()
+        .map(expenseLine -> expenseLine.split(","))
+        .mapToDouble(values -> Double.parseDouble(values[1].trim()))
+        .sum();
     // Calculate the total savings
     totalSavings = totalIncome - totalExpense;
     if (totalSavings < 0) {
