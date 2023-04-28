@@ -17,30 +17,24 @@ public class Welcome {
   
   @FXML
   private void onLogin() throws IOException {
-    // code to validate login credentials
-    
-    // if login is successful, navigate to dashboard
-    
-    // close the current welcome window
-    
+    // navigate to login page
     Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("login.fxml")));
     Stage stage = new Stage();
     stage.setScene(new Scene(root, 600, 800));
     stage.show();
+    // close the current welcome window
     Stage currentStage = (Stage) loginButton.getScene().getWindow();
     currentStage.close();
   }
   
   @FXML
   private void onRegister() throws IOException {
-    // code to navigate to register page
-    
-    // close the current welcome window
-    
+    // navigate to register page
     Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("register.fxml")));
     Stage stage = new Stage();
     stage.setScene(new Scene(root, 600, 800));
     stage.show();
+    // close the current welcome window
     Stage currentStage = (Stage) registerButton.getScene().getWindow();
     currentStage.close();
   }

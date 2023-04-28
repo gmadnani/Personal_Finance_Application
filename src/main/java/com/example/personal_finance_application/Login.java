@@ -29,7 +29,6 @@ public class Login {
     // Get the user input from the text fields
     String email = emailField.getText();
     String password = passwordField.getText();
-    
     // Find the user's CSV file
     File file = new File(email + ".csv");
     if (!file.exists()) {
@@ -40,7 +39,6 @@ public class Login {
       alert.showAndWait();
       return;
     }
-    
     // Read the user's data from the CSV file
     BufferedReader reader = new BufferedReader(new FileReader(file));
     String data = reader.readLine();
@@ -50,7 +48,6 @@ public class Login {
     String[] dataPassword = data.split(": ");
     String storedPassword = dataPassword[1];
     reader.close();
-    
     // Check if the password matches the one in the file
     if (!password.equals(storedPassword)) {
       // Display error message if password is incorrect
@@ -60,28 +57,29 @@ public class Login {
       alert.showAndWait();
       return;
     }
-    
-    // Login successful, show a success message and close the window
+    // Login successful, show a success message
     Alert alert = new Alert(Alert.AlertType.INFORMATION, "Login successful.");
     alert.showAndWait();
     currentUser = new User();
     currentUser.setEmail(email);
-    
+    // if login is successful, navigate to dashboard
     Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("dashboard.fxml")));
     Stage stage = new Stage();
     stage.setScene(new Scene(root, 600, 800));
     stage.show();
+    // close the current login window
     Stage currentStage = (Stage) submitButton.getScene().getWindow();
     currentStage.close();
-    
   }
   
   @FXML
   private void onGoBack() throws IOException {
+    // navigate to dashboard
     Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("welcome.fxml")));
     Stage stage = new Stage();
     stage.setScene(new Scene(root, 600, 800));
     stage.show();
+    // close the current login window
     Stage currentStage = (Stage) goBackButton.getScene().getWindow();
     currentStage.close();
   }

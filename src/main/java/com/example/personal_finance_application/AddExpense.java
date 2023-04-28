@@ -36,30 +36,32 @@ public class AddExpense {
     String category = categoryField.getText();
     LocalDate date = dateField.getValue();
     String notes = notesField.getText();
-    
     // Add the expense to the user's CSV file
     File file = new File(Login.getCurrentUser().getEmail() + ".csv");
     FileWriter writer = new FileWriter(file, true);
     writer.write("\nExpense: " + amount + "," + category + "," + date + "," + notes);
     writer.close();
-    
-    // Show a success message and close the window
+    // Show a success message
     Alert alert = new Alert(Alert.AlertType.INFORMATION, "Expense saved.");
     alert.showAndWait();
+    // if adding expense is successful, navigate to dashboard
     Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("dashboard.fxml")));
     Stage stage = new Stage();
     stage.setScene(new Scene(root, 600, 800));
     stage.show();
+    // close the current login window
     Stage currentStage = (Stage) saveButton.getScene().getWindow();
     currentStage.close();
   }
   
   @FXML
   private void onCancel() throws IOException {
+    // navigate to dashboard
     Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("dashboard.fxml")));
     Stage stage = new Stage();
     stage.setScene(new Scene(root, 600, 800));
     stage.show();
+    // close the current login window
     Stage currentStage = (Stage) cancelButton.getScene().getWindow();
     currentStage.close();
   }

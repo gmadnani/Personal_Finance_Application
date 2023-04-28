@@ -31,7 +31,6 @@ public class Register {
     String email = emailField.getText();
     String password = passwordField.getText();
     String confirmPassword = confirmPasswordField.getText();
-    
     // Validate the user input
     if (!password.equals(confirmPassword)) {
       // Passwords do not match, show an error message and return
@@ -56,37 +55,27 @@ public class Register {
     writer.write("\nPassword: " + password);
     writer.flush();
     writer.close();
-
-
-//    // Write the new user's data to a CSV file
-//    try (CSVWriter writer = new CSVWriter(new FileWriter(filename))) {
-//      // Write the header row
-//      String[] header = {"email", "password"};
-//      writer.writeNext(header);
-//
-//      // Write the user data
-//      String[] data = {newUser.getEmail(), newUser.getPassword()};
-//      writer.writeNext(data);
-//    }
-    
-    // Show a success message and close the window
-    Alert alert = new Alert(Alert.AlertType.INFORMATION, "registered successfully.");
+    //Register successful, show a success message
+    Alert alert = new Alert(Alert.AlertType.INFORMATION, "Registration successfully.");
     alert.showAndWait();
-    
+    // if register is successful, navigate to login
     Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("login.fxml")));
     Stage stage = new Stage();
     stage.setScene(new Scene(root, 600, 800));
     stage.show();
+    // close the current register window
     Stage currentStage = (Stage) submitButton.getScene().getWindow();
     currentStage.close();
   }
   
   @FXML
   private void onGoBack() throws IOException {
+    // navigate to welcome
     Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("welcome.fxml")));
     Stage stage = new Stage();
     stage.setScene(new Scene(root, 600, 800));
     stage.show();
+    // close the current register window
     Stage currentStage = (Stage) goBackButton.getScene().getWindow();
     currentStage.close();
   }
