@@ -42,10 +42,10 @@ public class Login {
     // Read the user's data from the CSV file
     BufferedReader reader = new BufferedReader(new FileReader(file));
     String data = reader.readLine();
-    String[] dataEmail = data.split(": ");
+    String[] dataEmail = data.split(",");
     String storedEmail = dataEmail[1];
     data = reader.readLine();
-    String[] dataPassword = data.split(": ");
+    String[] dataPassword = data.split(",");
     String storedPassword = dataPassword[1];
     reader.close();
     // Check if the password matches the one in the file

@@ -1,8 +1,7 @@
-Email: test@email.com
-Password: test123
+Email,test@email.com
+Password,test123
 Expense,10.0,new,2023-04-29,expense1
 Income,20.0,new,2023-03-26,income1
 Expense,10.0,new,2023-04-29,ex2
 Income,20.0,new,2023-03-26,in2
-Expense,10.0,new,2023-04-29,expense3
 Income,20.0,new,2023-03-26,income3

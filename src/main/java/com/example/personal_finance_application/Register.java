@@ -51,8 +51,8 @@ public class Register {
     }
     // Create new CSV file with email as name
     FileWriter writer = new FileWriter(file);
-    writer.write("Email: " + email);
-    writer.write("\nPassword: " + password);
+    writer.write("Email," + email);
+    writer.write("\nPassword," + password);
     writer.flush();
     writer.close();
     //Register successful, show a success message

@@ -14,8 +14,8 @@ import javafx.stage.Stage;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -79,6 +79,42 @@ public class DeleteExpense<T extends ReportEntry> {
   }
   
   @FXML
+  private void onDeleteExpense() {
+    ObservableList<T> selectedEntries = expenseTable.getSelectionModel().getSelectedItems();
+    try {
+      // Write updated data to file
+      File file = new File(Login.getCurrentUser().getEmail() + ".csv");
+      List<String> lines = Files.readAllLines(file.toPath());
+      List<String> remainingLines = new ArrayList<>();
+      for (String line : lines) {
+        Boolean found = false;
+        for (T entry : selectedEntries) {
+          double amount = entry.getAmount();
+          String category = entry.getCategory();
+          LocalDate date = entry.getDate();
+          String notes = entry.getNotes();
+          String lineToCheck = entry.getType() + "," + amount + "," + category + "," + date + "," + notes;
+          if (line.equals(lineToCheck)) {
+            found = true;
+          }
+        }
+        String[] values = line.split(",");
+        String type = values[0];
+        
+        if ((type.equals("Email") || type.equals("Password") || type.equals("Income") || type.equals("Expense")) && !found) {
+          remainingLines.add(line);
+        }
+      }
+      Files.write(file.toPath(), remainingLines);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    expenseData.removeAll(selectedEntries);
+    expenseTable.getItems().clear();
+    expenseTable.setItems(FXCollections.observableArrayList(expenseData));
+  }
+  
+  @FXML
   private void onGoBack() throws IOException {
     Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("dashboard.fxml")));
     Stage stage = new Stage();
@@ -86,23 +122,5 @@ public class DeleteExpense<T extends ReportEntry> {
     stage.show();
     Stage currentStage = (Stage) goBackButton.getScene().getWindow();
     currentStage.close();
-  }
-  
-  @FXML
-  private void onDeleteExpense() {
-    ObservableList<T> selectedEntries = expenseTable.getSelectionModel().getSelectedItems();
-    expenseData.removeAll(selectedEntries);
-    expenseTable.getItems().clear();
-    expenseTable.setItems(FXCollections.observableArrayList(expenseData));
-    try {
-      // Write updated data to file
-      FileWriter writer = new FileWriter(Login.getCurrentUser().getEmail() + ".csv");
-      for (ReportEntry entry : expenseData) {
-        writer.write(entry.toCSV() + "\n");
-      }
-      writer.close();
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
   }
 }
