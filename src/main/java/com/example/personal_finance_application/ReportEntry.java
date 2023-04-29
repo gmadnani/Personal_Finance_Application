@@ -35,4 +35,8 @@ public class ReportEntry {
   public String getType() {
     return type;
   }
+  
+  public String toCSV() {
+    return String.format("%s,%.2f,%s,%s,%s", type, amount, category, date.toString(), notes);
+  }
 }
