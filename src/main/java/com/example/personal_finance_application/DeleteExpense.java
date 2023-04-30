@@ -6,7 +6,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -20,6 +22,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 public class DeleteExpense<T extends ReportEntry> {
   @FXML
@@ -81,37 +84,43 @@ public class DeleteExpense<T extends ReportEntry> {
   @FXML
   private void onDeleteExpense() {
     ObservableList<T> selectedEntries = expenseTable.getSelectionModel().getSelectedItems();
-    try {
-      // Write updated data to file
-      File file = new File(Login.getCurrentUser().getEmail() + ".csv");
-      List<String> lines = Files.readAllLines(file.toPath());
-      List<String> remainingLines = new ArrayList<>();
-      for (String line : lines) {
-        Boolean found = false;
-        for (T entry : selectedEntries) {
-          double amount = entry.getAmount();
-          String category = entry.getCategory();
-          LocalDate date = entry.getDate();
-          String notes = entry.getNotes();
-          String lineToCheck = entry.getType() + "," + amount + "," + category + "," + date + "," + notes;
-          if (line.equals(lineToCheck)) {
-            found = true;
+    // show confirmation dialog
+    Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to delete the selected entries?");
+    alert.setTitle("Delete Entries");
+    Optional<ButtonType> result = alert.showAndWait();
+    if (result.isPresent() && result.get() == ButtonType.OK) {
+      try {
+        // Write updated data to file
+        File file = new File(Login.getCurrentUser().getEmail() + ".csv");
+        List<String> lines = Files.readAllLines(file.toPath());
+        List<String> remainingLines = new ArrayList<>();
+        for (String line : lines) {
+          Boolean found = false;
+          for (T entry : selectedEntries) {
+            double amount = entry.getAmount();
+            String category = entry.getCategory();
+            LocalDate date = entry.getDate();
+            String notes = entry.getNotes();
+            String lineToCheck = entry.getType() + "," + amount + "," + category + "," + date + "," + notes;
+            if (line.equals(lineToCheck)) {
+              found = true;
+            }
+          }
+          String[] values = line.split(",");
+          String type = values[0];
+          
+          if ((type.equals("Email") || type.equals("Password") || type.equals("Income") || type.equals("Expense")) && !found) {
+            remainingLines.add(line);
           }
         }
-        String[] values = line.split(",");
-        String type = values[0];
-        
-        if ((type.equals("Email") || type.equals("Password") || type.equals("Income") || type.equals("Expense")) && !found) {
-          remainingLines.add(line);
-        }
+        Files.write(file.toPath(), remainingLines);
+      } catch (IOException e) {
+        e.printStackTrace();
       }
-      Files.write(file.toPath(), remainingLines);
-    } catch (IOException e) {
-      e.printStackTrace();
+      expenseData.removeAll(selectedEntries);
+      expenseTable.getItems().clear();
+      expenseTable.setItems(FXCollections.observableArrayList(expenseData));
     }
-    expenseData.removeAll(selectedEntries);
-    expenseTable.getItems().clear();
-    expenseTable.setItems(FXCollections.observableArrayList(expenseData));
   }
   
   @FXML
