@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.Objects;
 public class AddIncome {
@@ -31,11 +32,39 @@ public class AddIncome {
   
   @FXML
   private void onSave() throws IOException {
+    
     // Get the income data from the user input fields
-    double amount = Double.parseDouble(amountField.getText());
+    String amountText = amountField.getText();
     String category = categoryField.getText();
     LocalDate date = dateField.getValue();
     String notes = notesField.getText();
+    
+    // Check that no field is empty
+    if (amountText.isEmpty() || category.isEmpty() || date == null || notes.isEmpty()) {
+      Alert alert = new Alert(Alert.AlertType.ERROR, "Please fill in all fields.");
+      alert.showAndWait();
+      return;
+    }
+    
+    // Validate the income data
+    double amount;
+    try {
+      amount = Double.parseDouble(amountText);
+    } catch (NumberFormatException e) {
+      // Amount is not a number, show an error message and return
+      Alert alert = new Alert(Alert.AlertType.ERROR, "Amount must be a number.");
+      alert.showAndWait();
+      return;
+    }
+    
+    try {
+      date = dateField.getValue();
+    } catch (DateTimeException e) {
+      // Date is not in a valid format, show an error message and return
+      Alert alert = new Alert(Alert.AlertType.ERROR, "Date must be in a valid format.");
+      alert.showAndWait();
+      return;
+    }
     // Add the income to the user's CSV file
     File file = new File(Login.getCurrentUser().getEmail() + ".csv");
     FileWriter writer = new FileWriter(file, true);
