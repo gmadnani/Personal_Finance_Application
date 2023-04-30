@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import java.io.BufferedReader;
@@ -18,11 +19,17 @@ public class Login {
   @FXML
   private TextField emailField;
   @FXML
-  private TextField passwordField;
+  private PasswordField passwordField;
   @FXML
   private Button submitButton;
   @FXML
   private Button goBackButton;
+  
+  private static final String EMAIL_PATTERN =
+      "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+          + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+  private static final String PASSWORD_PATTERN =
+      "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$";
   
   @FXML
   private void onSubmit() throws IOException {
@@ -31,6 +38,18 @@ public class Login {
     String password = passwordField.getText();
     // Find the user's CSV file
     File file = new File(email + ".csv");
+    if (!email.matches(EMAIL_PATTERN)) {
+      // Email is not in a valid format, show an error message and return
+      Alert alert = new Alert(Alert.AlertType.ERROR, "Email is not in a valid format.");
+      alert.showAndWait();
+      return;
+    }
+    if (!password.matches(PASSWORD_PATTERN)) {
+      // Password is not strong enough, show an error message and return
+      Alert alert = new Alert(Alert.AlertType.ERROR, "Password should be at least 8 characters and include at least one uppercase letter, one lowercase letter, one digit, and one special character.");
+      alert.showAndWait();
+      return;
+    }
     if (!file.exists()) {
       // Display error message if file does not exist
       Alert alert = new Alert(Alert.AlertType.ERROR);
