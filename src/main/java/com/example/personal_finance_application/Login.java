@@ -15,7 +15,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Objects;
 public class Login {
-  private static User currentUser;
+  public static User currentUser;
   @FXML
   private TextField emailField;
   @FXML

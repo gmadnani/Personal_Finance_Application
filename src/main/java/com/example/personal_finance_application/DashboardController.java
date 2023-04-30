@@ -24,6 +24,8 @@ public class DashboardController {
   @FXML
   private Label savingsLabel;
   @FXML
+  private Button logoutButton;
+  @FXML
   private Button addIncomeButton;
   @FXML
   private Button addExpenseButton;
@@ -166,5 +168,19 @@ public class DashboardController {
     incomeLabel.setText(String.format("%.2f", totalIncome));
     expenseLabel.setText(String.format("%.2f", totalExpense));
     savingsLabel.setText(String.format("%.2f", totalSavings));
+  }
+  
+  @FXML
+  private void onLogout() throws IOException {
+    // Reset the current user
+    Login.currentUser = null;
+    // Navigate to the login view
+    Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("welcome.fxml")));
+    Stage stage = new Stage();
+    stage.setScene(new Scene(root, 600, 800));
+    stage.show();
+    // Close the dashboard view
+    Stage currentStage = (Stage) logoutButton.getScene().getWindow();
+    currentStage.close();
   }
 }
