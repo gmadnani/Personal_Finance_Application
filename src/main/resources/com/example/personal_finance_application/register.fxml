@@ -49,7 +49,7 @@
                             <Font name="Comic Sans MS" size="25.0"/>
                         </font>
                     </Label>
-                    <TextField fx:id="passwordField"/>
+                    <PasswordField fx:id="passwordField"/>
                 </children>
                 <VBox.margin>
                     <Insets left="30.0"/>
@@ -63,7 +63,7 @@
                             <Font name="Comic Sans MS" size="25.0"/>
                         </font>
                     </Label>
-                    <TextField fx:id="confirmPasswordField"/>
+                    <PasswordField fx:id="confirmPasswordField"/>
                 </children>
                 <VBox.margin>
                     <Insets left="30.0"/>
