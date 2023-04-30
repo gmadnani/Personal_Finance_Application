@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<BorderPane fx:id="mainPane" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #8BD5D0;"
+            xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.personal_finance_application.DeleteIncome">
+    <top>
+        <VBox alignment="CENTER" spacing="20.0" BorderPane.alignment="CENTER">
+            <Label alignment="CENTER" prefHeight="87.0" prefWidth="669.0" style="-fx-background-color: #79D17E;"
+                   text="Personal Finance Application" textAlignment="CENTER">
+                <font>
+                    <Font name="Comic Sans MS Bold" size="35.0"/>
+                </font>
+            </Label>
+        </VBox>
+    </top>
+    <center>
+        <VBox alignment="TOP_CENTER" prefHeight="240.0" prefWidth="502.0" spacing="20.0" BorderPane.alignment="CENTER">
+            <Label alignment="CENTER" contentDisplay="CENTER" text="Report" textAlignment="CENTER">
+                <font>
+                    <Font name="Comic Sans MS" size="30.0"/>
+                </font>
+                <VBox.margin>
+                    <Insets top="20.0"/>
+                </VBox.margin>
+
+
+            </Label>
+            <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="530.0" prefWidth="800.0">
+                <TableView fx:id="incomeTable" prefHeight="530.0" prefWidth="800.0">
+                    <columns>
+                        <TableColumn prefWidth="30.0"/>
+                        <TableColumn prefWidth="100.0" text="Type"/>
+                        <TableColumn prefWidth="100.0" text="Amount"/>
+                        <TableColumn prefWidth="100.0" text="Category"/>
+                        <TableColumn prefWidth="100.0" text="Date"/>
+                        <TableColumn prefWidth="400.0" text="Notes"/>
+                    </columns>
+                </TableView>
+            </ScrollPane>
+            <Button fx:id="deleteButton" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onDeleteIncome"
+                    text="Delete Selected Income">
+                <font>
+                    <Font name="Comic Sans MS" size="25.0"/>
+                </font>
+            </Button>
+            <Button fx:id="goBackButton" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onGoBack"
+                    text="Go Back">
+                <font>
+                    <Font name="Comic Sans MS" size="25.0"/>
+                </font>
+            </Button>
+        </VBox>
+    </center>
+</BorderPane>
