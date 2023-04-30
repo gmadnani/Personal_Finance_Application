@@ -16,6 +16,8 @@ import java.util.List;
 import java.util.Objects;
 public class DashboardController {
   @FXML
+  private Label nameLable;
+  @FXML
   private Label incomeLabel;
   @FXML
   private Label expenseLabel;
@@ -37,6 +39,19 @@ public class DashboardController {
   private Button generateReportButton;
   
   public void initialize() throws IOException {
+    File file = new File(Login.getCurrentUser().getEmail() + ".csv");
+    BufferedReader reader = new BufferedReader(new FileReader(file));
+    // Read the CSV file line by line
+    String line;
+    while ((line = reader.readLine()) != null) {
+      String[] values = line.split(",");
+      String type = values[0].trim();
+      // Store income and expense data in separate lists
+      if (type.equals("Name")) {
+        nameLable.setText("Welcome " + values[1]);
+        break;
+      }
+    }
     updateTotals();
   }
   

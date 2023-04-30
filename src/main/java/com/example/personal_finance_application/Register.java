@@ -20,6 +20,8 @@ public class Register {
   @FXML
   private Button goBackButton;
   @FXML
+  private TextField nameField;
+  @FXML
   private TextField emailField;
   @FXML
   private PasswordField passwordField;
@@ -35,9 +37,16 @@ public class Register {
   @FXML
   private void onSubmit() throws IOException {
     // Get the user input from the text fields
+    String name = nameField.getText();
     String email = emailField.getText();
     String password = passwordField.getText();
     String confirmPassword = confirmPasswordField.getText();
+    // Check that no field is empty
+    if (name.isEmpty() || email.isEmpty() || password == null || confirmPassword.isEmpty()) {
+      Alert alert = new Alert(Alert.AlertType.ERROR, "Please fill in all fields.");
+      alert.showAndWait();
+      return;
+    }
     // Validate the user input
     if (!password.equals(confirmPassword)) {
       // Passwords do not match, show an error message and return
@@ -72,6 +81,7 @@ public class Register {
     FileWriter writer = new FileWriter(file);
     writer.write("Email," + email);
     writer.write("\nPassword," + password);
+    writer.write("\nName," + name);
     writer.flush();
     writer.close();
     //Register successful, show a success message

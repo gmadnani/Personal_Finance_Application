@@ -30,6 +30,20 @@
             <HBox alignment="CENTER_LEFT" prefHeight="39.0" prefWidth="500.0" spacing="20.0"
                   BorderPane.alignment="CENTER">
                 <children>
+                    <Label text="Name: ">
+                        <font>
+                            <Font name="Comic Sans MS" size="25.0"/>
+                        </font>
+                    </Label>
+                    <TextField fx:id="nameField"/>
+                </children>
+                <VBox.margin>
+                    <Insets left="30.0"/>
+                </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="39.0" prefWidth="500.0" spacing="20.0"
+                  BorderPane.alignment="CENTER">
+                <children>
                     <Label text="Email: ">
                         <font>
                             <Font name="Comic Sans MS" size="25.0"/>
