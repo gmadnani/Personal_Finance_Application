@@ -64,17 +64,21 @@ public class DeleteIncome<T extends ReportEntry> {
 /// updateIncome (update the income data in the csv)              ///
 ///////////////////////////////////////////////////////////////////
   public void updateIncome() throws IOException {
+    //reading from csv
     File file = new File(Login.getCurrentUser().getEmail() + ".csv");
     BufferedReader reader = new BufferedReader(new FileReader(file));
     String line;
     while ((line = reader.readLine()) != null) {
+      //spliting by ','
       String[] values = line.split(",");
       String type = values[0];
+      // checking if its income
       if (type.equals("Income")) {
         double amount = Double.parseDouble(values[1].trim());
         String category = values[2];
         LocalDate date = LocalDate.parse(values[3]);
         String notes = values[4];
+        //adding to list
         T entry = (T) new ReportEntry(type, amount, category, date, notes);
         incomeData.add(entry);
       }
@@ -86,6 +90,7 @@ public class DeleteIncome<T extends ReportEntry> {
 /// chooseIncome (allows the user to select the income data)      ///
 ///////////////////////////////////////////////////////////////////
   private void chooseIncome() {
+    // showing by columns
     TableColumn<T, String> typeCol = new TableColumn<>("Type");
     typeCol.setCellValueFactory(new PropertyValueFactory<>("type"));
     
@@ -101,6 +106,7 @@ public class DeleteIncome<T extends ReportEntry> {
     TableColumn<T, String> notesCol = new TableColumn<>("Notes");
     notesCol.setCellValueFactory(new PropertyValueFactory<>("notes"));
     
+    // arranging by columns
     incomeTable.getColumns().setAll(typeCol, amountCol, categoryCol, dateCol, notesCol);
     
     ObservableList<T> data = FXCollections.observableArrayList();
@@ -113,6 +119,7 @@ public class DeleteIncome<T extends ReportEntry> {
 ///////////////////////////////////////////////////////////////////
   @FXML
   private void onDeleteIncome() {
+    // select the income entry to delete
     ObservableList<T> selectedEntries = incomeTable.getSelectionModel().getSelectedItems();
     // show confirmation dialog
     Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to delete the selected entries?");
@@ -132,6 +139,7 @@ public class DeleteIncome<T extends ReportEntry> {
             LocalDate date = entry.getDate();
             String notes = entry.getNotes();
             String lineToCheck = entry.getType() + "," + amount + "," + category + "," + date + "," + notes;
+            //check if line is same as delete entry line
             if (line.equals(lineToCheck)) {
               found = true;
             }
@@ -139,10 +147,12 @@ public class DeleteIncome<T extends ReportEntry> {
           String[] values = line.split(",");
           String type = values[0];
           
+          // if entry to be deleted is found add all other lines except that line
           if ((type.equals("Email") || type.equals("Password") || type.equals("Income") || type.equals("Expense")) && !found) {
             remainingLines.add(line);
           }
         }
+        //rewrite csv file
         Files.write(file.toPath(), remainingLines);
       } catch (IOException e) {
         e.printStackTrace();

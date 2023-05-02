@@ -57,18 +57,22 @@ public class ViewIncome<T extends ReportEntry> {
 /// updateIncome (update the income data in the csv)              ///
 ///////////////////////////////////////////////////////////////////
   public void updateIncome() throws IOException {
+    //reading from csv
     File file = new File(Login.getCurrentUser().getEmail() + ".csv");
     BufferedReader reader = new BufferedReader(new FileReader(file));
     String line;
     while ((line = reader.readLine()) != null) {
+      //spliting by ','
       String[] values = line.split(",");
       String type = values[0];
+      // checking if its income
       if (type.equals("Income")) {
         double amount = Double.parseDouble(values[1].trim());
         String category = values[2];
         LocalDate date = LocalDate.parse(values[3]);
         String notes = values[4];
         T entry = (T) new ReportEntry(type, amount, category, date, notes);
+        //adding to list
         incomeData.add(entry);
       }
     }
@@ -79,6 +83,7 @@ public class ViewIncome<T extends ReportEntry> {
 /// showIncome (show the income data in the table format)         ///
 ///////////////////////////////////////////////////////////////////
   private void showIncome() {
+    // showing by columns
     TableColumn<T, String> typeCol = new TableColumn<>("Type");
     typeCol.setCellValueFactory(new PropertyValueFactory<>("type"));
     
@@ -94,6 +99,7 @@ public class ViewIncome<T extends ReportEntry> {
     TableColumn<T, String> notesCol = new TableColumn<>("Notes");
     notesCol.setCellValueFactory(new PropertyValueFactory<>("notes"));
     
+    // arranging by columns
     incomeTable.getColumns().setAll(typeCol, amountCol, categoryCol, dateCol, notesCol);
     
     ObservableList<T> data = FXCollections.observableArrayList();
