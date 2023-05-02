@@ -1,3 +1,21 @@
+//---------------------------------------------------------------------------
+//
+// AddExpense
+// Adding expense to csv
+//
+// Author: Girish Madnani
+// Date: 05/02/23
+// Class: MET CS622
+// Issues: None known
+//
+// Description:
+// This class takes in the inputs from the input fields and save it in the
+// csv as an Expense
+//
+// Assumptions:
+// All the fields are typed in and are in the right format
+//
+
 package com.example.personal_finance_application;
 
 import javafx.fxml.FXML;

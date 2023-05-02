@@ -1,3 +1,21 @@
+//---------------------------------------------------------------------------
+//
+// ReportEntry
+// Entry format for the table in any view
+//
+// Author: Girish Madnani
+// Date: 05/02/23
+// Class: MET CS622
+// Issues: None known
+//
+// Description:
+// This class is used from generics and the entries in the csv are stored here
+// for manipulation
+//
+// Assumptions:
+// none
+//
+
 package com.example.personal_finance_application;
 
 import java.time.LocalDate;
@@ -36,7 +54,4 @@ public class ReportEntry {
     return type;
   }
   
-  public String toCSV() {
-    return String.format("%s,%.2f,%s,%s,%s", type, amount, category, date.toString(), notes);
-  }
 }

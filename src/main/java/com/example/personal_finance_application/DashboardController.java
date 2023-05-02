@@ -1,3 +1,22 @@
+//---------------------------------------------------------------------------
+//
+// DashboardController
+// Main dashboard for the application
+//
+// Author: Girish Madnani
+// Date: 05/02/23
+// Class: MET CS622
+// Issues: None known
+//
+// Description:
+// This class routes to all the necessary pages of income, expense and report.
+// It also calculates the total income, expense and savings in order to be
+// displayed on the dashboard page
+//
+// Assumptions:
+// savings cannot go less than 0
+//
+
 package com.example.personal_finance_application;
 
 import javafx.fxml.FXML;

@@ -1,3 +1,21 @@
+//---------------------------------------------------------------------------
+//
+// Login
+// Logging in your account
+//
+// Author: Girish Madnani
+// Date: 05/02/23
+// Class: MET CS622
+// Issues: None known
+//
+// Description:
+// This class reads your inputs from the input fields and check if those
+// credentials exists in the csv
+//
+// Assumptions:
+// all the fields are typed in
+//
+
 package com.example.personal_finance_application;
 
 import javafx.fxml.FXML;

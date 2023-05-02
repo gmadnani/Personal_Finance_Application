@@ -1,3 +1,20 @@
+//---------------------------------------------------------------------------
+//
+// Welcome
+// Starting point of the application
+//
+// Author: Girish Madnani
+// Date: 05/02/23
+// Class: MET CS622
+// Issues: None known
+//
+// Description:
+// This class displays the login and register button
+//
+// Assumptions:
+// none
+//
+
 package com.example.personal_finance_application;
 
 import javafx.fxml.FXML;

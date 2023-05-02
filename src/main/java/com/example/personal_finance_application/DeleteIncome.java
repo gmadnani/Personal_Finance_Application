@@ -1,3 +1,21 @@
+//---------------------------------------------------------------------------
+//
+// DeleteExpense
+// Deleting incomes from csv
+//
+// Author: Girish Madnani
+// Date: 05/02/23
+// Class: MET CS622
+// Issues: None known
+//
+// Description:
+// This class allows to select incomes from the table which is to be deleted
+// from the csv.
+//
+// Assumptions:
+// An "are you sure" message is displayed when delete button is pressed
+//
+
 package com.example.personal_finance_application;
 
 import javafx.collections.FXCollections;

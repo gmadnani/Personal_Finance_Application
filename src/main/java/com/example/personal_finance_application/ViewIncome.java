@@ -1,3 +1,21 @@
+//---------------------------------------------------------------------------
+//
+// ViewIncome
+// Viewing Incomes for the application
+//
+// Author: Girish Madnani
+// Date: 05/02/23
+// Class: MET CS622
+// Issues: None known
+//
+// Description:
+// This class reads all and incomes in the csv and then arranges in a table
+// format which is to be displayed
+//
+// Assumptions:
+// only incomes are displayed
+//
+
 package com.example.personal_finance_application;
 
 import javafx.collections.FXCollections;
