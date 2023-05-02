@@ -49,6 +49,11 @@ public class Login {
   private static final String PASSWORD_PATTERN =
       "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$";
   
+  ///////////////////////////////////////////////////////////////////
+/// onSubmit (save to csv)                                         ///
+/// Input : values of the input fields                            ///
+/// Output: All outputs are alerts based on different conditions  ///
+///////////////////////////////////////////////////////////////////
   @FXML
   private void onSubmit() throws IOException {
     // Get the user input from the text fields
@@ -109,6 +114,9 @@ public class Login {
     currentStage.close();
   }
   
+  ///////////////////////////////////////////////////////////////////
+/// onGoBack (navigates the page to welcome)                      ///
+///////////////////////////////////////////////////////////////////
   @FXML
   private void onGoBack() throws IOException {
     // navigate to dashboard
@@ -121,6 +129,9 @@ public class Login {
     currentStage.close();
   }
   
+  ///////////////////////////////////////////////////////////////////
+/// getCurrentUser (get the user data)                            ///
+///////////////////////////////////////////////////////////////////
   public static User getCurrentUser() {
     return currentUser;
   }

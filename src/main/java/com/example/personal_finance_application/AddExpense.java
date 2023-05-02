@@ -48,6 +48,11 @@ public class AddExpense {
   @FXML
   private Button cancelButton;
   
+  ///////////////////////////////////////////////////////////////////
+/// onSave (save to csv)                                          ///
+/// Input : values of the input fields                            ///
+/// Output: All outputs are alerts based on different conditions  ///
+///////////////////////////////////////////////////////////////////
   @FXML
   private void onSave() throws IOException {
     // Get the expense data from the user input fields
@@ -95,11 +100,14 @@ public class AddExpense {
     Stage stage = new Stage();
     stage.setScene(new Scene(root, 600, 800));
     stage.show();
-    // close the current login window
+    // close the current add expense window
     Stage currentStage = (Stage) saveButton.getScene().getWindow();
     currentStage.close();
   }
   
+  ///////////////////////////////////////////////////////////////////
+/// onCancel ( cancel the add expense and routes to dashboard)    ///
+///////////////////////////////////////////////////////////////////
   @FXML
   private void onCancel() throws IOException {
     // navigate to dashboard
@@ -107,7 +115,7 @@ public class AddExpense {
     Stage stage = new Stage();
     stage.setScene(new Scene(root, 600, 800));
     stage.show();
-    // close the current login window
+    // close the current add expense window
     Stage currentStage = (Stage) cancelButton.getScene().getWindow();
     currentStage.close();
   }

@@ -52,11 +52,17 @@ public class DeleteIncome<T extends ReportEntry> {
   
   private List<T> incomeData = new ArrayList<>();
   
+  ///////////////////////////////////////////////////////////////////
+/// initialize (initializes the delete income page)               ///
+///////////////////////////////////////////////////////////////////
   public void initialize() throws IOException {
     updateIncome();
     chooseIncome();
   }
   
+  ///////////////////////////////////////////////////////////////////
+/// updateIncome (update the income data in the csv)              ///
+///////////////////////////////////////////////////////////////////
   public void updateIncome() throws IOException {
     File file = new File(Login.getCurrentUser().getEmail() + ".csv");
     BufferedReader reader = new BufferedReader(new FileReader(file));
@@ -76,6 +82,9 @@ public class DeleteIncome<T extends ReportEntry> {
     reader.close();
   }
   
+  ///////////////////////////////////////////////////////////////////
+/// chooseIncome (allows the user to select the income data)      ///
+///////////////////////////////////////////////////////////////////
   private void chooseIncome() {
     TableColumn<T, String> typeCol = new TableColumn<>("Type");
     typeCol.setCellValueFactory(new PropertyValueFactory<>("type"));
@@ -99,6 +108,9 @@ public class DeleteIncome<T extends ReportEntry> {
     incomeTable.setItems(data);
   }
   
+  ///////////////////////////////////////////////////////////////////
+/// onDeleteIncome (deletes selected income data)                 ///
+///////////////////////////////////////////////////////////////////
   @FXML
   private void onDeleteIncome() {
     ObservableList<T> selectedEntries = incomeTable.getSelectionModel().getSelectedItems();
@@ -141,12 +153,17 @@ public class DeleteIncome<T extends ReportEntry> {
     }
   }
   
+  ///////////////////////////////////////////////////////////////////
+/// onGoBack (navigates the page to dashboard)                    ///
+///////////////////////////////////////////////////////////////////
   @FXML
   private void onGoBack() throws IOException {
+    //navigate to dashboard
     Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("dashboard.fxml")));
     Stage stage = new Stage();
     stage.setScene(new Scene(root, 600, 800));
     stage.show();
+    // Close the delete expense view
     Stage currentStage = (Stage) goBackButton.getScene().getWindow();
     currentStage.close();
   }

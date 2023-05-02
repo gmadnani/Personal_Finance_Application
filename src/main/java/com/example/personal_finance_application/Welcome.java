@@ -32,6 +32,9 @@ public class Welcome {
   @FXML
   private Button registerButton;
   
+  ///////////////////////////////////////////////////////////////////
+/// onLogin (navigates to login page)                             ///
+///////////////////////////////////////////////////////////////////
   @FXML
   private void onLogin() throws IOException {
     // navigate to login page
@@ -44,6 +47,9 @@ public class Welcome {
     currentStage.close();
   }
   
+  ///////////////////////////////////////////////////////////////////
+/// onRegister (navigates to register page)                       ///
+///////////////////////////////////////////////////////////////////
   @FXML
   private void onRegister() throws IOException {
     // navigate to register page

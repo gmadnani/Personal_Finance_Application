@@ -43,6 +43,9 @@ public class ViewIncome<T extends ReportEntry> {
   @FXML
   private Button goBackButton;
   
+  ///////////////////////////////////////////////////////////////////
+/// initialize (initializes the view income page)                 ///
+///////////////////////////////////////////////////////////////////
   public void initialize() throws IOException {
     updateIncome();
     showIncome();
@@ -50,8 +53,10 @@ public class ViewIncome<T extends ReportEntry> {
   
   private List<T> incomeData = new ArrayList<>();
   
+  ///////////////////////////////////////////////////////////////////
+/// updateIncome (update the income data in the csv)              ///
+///////////////////////////////////////////////////////////////////
   public void updateIncome() throws IOException {
-    
     File file = new File(Login.getCurrentUser().getEmail() + ".csv");
     BufferedReader reader = new BufferedReader(new FileReader(file));
     String line;
@@ -70,6 +75,9 @@ public class ViewIncome<T extends ReportEntry> {
     reader.close();
   }
   
+  ///////////////////////////////////////////////////////////////////
+/// showIncome (show the income data in the table format)         ///
+///////////////////////////////////////////////////////////////////
   private void showIncome() {
     TableColumn<T, String> typeCol = new TableColumn<>("Type");
     typeCol.setCellValueFactory(new PropertyValueFactory<>("type"));
@@ -93,12 +101,17 @@ public class ViewIncome<T extends ReportEntry> {
     incomeTable.setItems(data);
   }
   
+  ///////////////////////////////////////////////////////////////////
+/// onGoBack (navigates the page to dashboard)                    ///
+///////////////////////////////////////////////////////////////////
   @FXML
   private void onGoBack() throws IOException {
+    // navigate to dashboard
     Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("dashboard.fxml")));
     Stage stage = new Stage();
     stage.setScene(new Scene(root, 600, 800));
     stage.show();
+    // Close the view income view
     Stage currentStage = (Stage) goBackButton.getScene().getWindow();
     currentStage.close();
   }

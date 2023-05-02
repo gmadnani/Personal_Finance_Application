@@ -48,6 +48,11 @@ public class AddIncome {
   @FXML
   private Button cancelButton;
   
+  ///////////////////////////////////////////////////////////////////
+/// onSave (save to csv)                                          ///
+/// Input : values of the input fields                            ///
+/// Output: All outputs are alerts based on different conditions  ///
+///////////////////////////////////////////////////////////////////
   @FXML
   private void onSave() throws IOException {
     
@@ -96,17 +101,22 @@ public class AddIncome {
     Stage stage = new Stage();
     stage.setScene(new Scene(root, 600, 800));
     stage.show();
-    // close the current login window
+    // close the current add income window
     Stage currentStage = (Stage) saveButton.getScene().getWindow();
     currentStage.close();
   }
   
+  ///////////////////////////////////////////////////////////////////
+/// onCancel ( cancel the add income and routes to dashboard)    ///
+///////////////////////////////////////////////////////////////////
   @FXML
   private void onCancel() throws IOException {
+    // navigate to dashboard
     Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("dashboard.fxml")));
     Stage stage = new Stage();
     stage.setScene(new Scene(root, 600, 800));
     stage.show();
+    // close the current add income window
     Stage currentStage = (Stage) cancelButton.getScene().getWindow();
     currentStage.close();
   }

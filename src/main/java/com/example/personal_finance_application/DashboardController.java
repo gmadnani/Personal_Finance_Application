@@ -23,6 +23,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
@@ -59,6 +60,9 @@ public class DashboardController {
   @FXML
   private Button generateReportButton;
   
+  ///////////////////////////////////////////////////////////////////
+/// initialize (initialize the dashboard page)                    ///
+///////////////////////////////////////////////////////////////////
   public void initialize() throws IOException {
     File file = new File(Login.getCurrentUser().getEmail() + ".csv");
     BufferedReader reader = new BufferedReader(new FileReader(file));
@@ -76,76 +80,114 @@ public class DashboardController {
     updateTotals();
   }
   
+  ///////////////////////////////////////////////////////////////////
+/// onAddIncome (route to add income page)                        ///
+///////////////////////////////////////////////////////////////////
   @FXML
   private void onAddIncome() throws IOException {
+    // navigate to add income
     Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("addIncome.fxml")));
     Stage stage = new Stage();
     stage.setScene(new Scene(root, 600, 800));
     stage.show();
+    // close the current dashboard window
     Stage currentStage = (Stage) addIncomeButton.getScene().getWindow();
     currentStage.close();
   }
   
+  ///////////////////////////////////////////////////////////////////
+/// onAddExpense (route to add expense page)                        ///
+///////////////////////////////////////////////////////////////////
   @FXML
   private void onAddExpense() throws IOException {
+    // navigate to add expense
     Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("addExpense.fxml")));
     Stage stage = new Stage();
     stage.setScene(new Scene(root, 600, 800));
     stage.show();
+    // close the current dashboard window
     Stage currentStage = (Stage) addExpenseButton.getScene().getWindow();
     currentStage.close();
   }
   
+  ///////////////////////////////////////////////////////////////////
+/// onDeleteIncome (route to delete income page)                        ///
+///////////////////////////////////////////////////////////////////
   @FXML
   private void onDeleteIncome() throws IOException {
+    // navigate to delete income
     Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("deleteIncome.fxml")));
     Stage stage = new Stage();
     stage.setScene(new Scene(root, 600, 800));
     stage.show();
+    // close the current dashboard window
     Stage currentStage = (Stage) deleteIncomeButton.getScene().getWindow();
     currentStage.close();
   }
   
+  ///////////////////////////////////////////////////////////////////
+/// onDeleteExpense (route to delete expense page)                ///
+///////////////////////////////////////////////////////////////////
   @FXML
   private void onDeleteExpense() throws IOException {
+    // navigate to delete expense
     Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("deleteExpense.fxml")));
     Stage stage = new Stage();
     stage.setScene(new Scene(root, 600, 800));
     stage.show();
+    // close the current dashboard window
     Stage currentStage = (Stage) deleteExpenseButton.getScene().getWindow();
     currentStage.close();
   }
   
+  ///////////////////////////////////////////////////////////////////
+/// onViewIncome (route to view income page)                        ///
+///////////////////////////////////////////////////////////////////
   @FXML
   private void onViewIncome() throws IOException {
+    // navigate to view income
     Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("viewIncome.fxml")));
     Stage stage = new Stage();
     stage.setScene(new Scene(root, 600, 800));
     stage.show();
+    // close the current dashboard window
     Stage currentStage = (Stage) viewIncomeButton.getScene().getWindow();
     currentStage.close();
   }
   
+  ///////////////////////////////////////////////////////////////////
+/// onViewExpense (route to view expense page)                    ///
+///////////////////////////////////////////////////////////////////
   @FXML
   private void onViewExpense() throws IOException {
+    // navigate to view expense
     Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("viewExpense.fxml")));
     Stage stage = new Stage();
     stage.setScene(new Scene(root, 600, 800));
     stage.show();
+    // close the current dashboard window
     Stage currentStage = (Stage) viewExpenseButton.getScene().getWindow();
     currentStage.close();
   }
   
+  ///////////////////////////////////////////////////////////////////
+/// onGenerateReport (route to generate report page)              ///
+///////////////////////////////////////////////////////////////////
   @FXML
   private void onGenerateReport() throws IOException {
+    // navigate to report
     Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("report.fxml")));
     Stage stage = new Stage();
     stage.setScene(new Scene(root, 600, 800));
     stage.show();
+    // close the current dashboard window
     Stage currentStage = (Stage) generateReportButton.getScene().getWindow();
     currentStage.close();
   }
   
+  ///////////////////////////////////////////////////////////////////////
+/// updateTotals (calculates the total income, expense and savings)   ///
+///////////////////////////////////////////////////////////////////////
   private void updateTotals() throws IOException {
     // Create lists to store income and expense data
     List<String> incomeData = new ArrayList<>();
@@ -189,11 +231,17 @@ public class DashboardController {
     savingsLabel.setText(String.format("%.2f", totalSavings));
   }
   
+  ///////////////////////////////////////////////////////////////////
+/// onLogout (logs out the user)                                  ///
+///////////////////////////////////////////////////////////////////
   @FXML
   private void onLogout() throws IOException {
     // Reset the current user
     Login.currentUser = null;
-    // Navigate to the login view
+    // Show a success message
+    Alert alert = new Alert(Alert.AlertType.INFORMATION, "Logout successful.");
+    alert.showAndWait();
+    // Navigate to the welcome view
     Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("welcome.fxml")));
     Stage stage = new Stage();
     stage.setScene(new Scene(root, 600, 800));
